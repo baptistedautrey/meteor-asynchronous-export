@@ -10,9 +10,16 @@ const AVAILABLE_URLS = [
 
 Meteor.methods({
   'exports.insert'() {
-    ExportsCollection.insert({
+    return ExportsCollection.insert({
       url: AVAILABLE_URLS[Math.floor(Math.random() * 4)],
       loadingProgression: 0
     });
+  },
+  'exports.updateProgressbar'(exportId, loadingProgression) {
+    ExportsCollection.update(exportId, {
+      $set: {
+      loadingProgression: loadingProgression,
+      },
+    }); 
   },
 })

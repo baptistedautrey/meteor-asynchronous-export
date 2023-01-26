@@ -1,0 +1,27 @@
+:root {
+    --success: #43BB88;
+    --progress: #da5f5f;
+}
+
+.progressbar-wrapper {
+    background-color: #dfe6e9;
+    color: white;
+    border-radius: 15px;
+    width: 25%;
+}
+
+.progressbar {
+    background-color: var(--progress);
+    color: white;
+    padding: 1em;
+    text-align: right;
+    border-radius: 15px;
+}
+
+.progressbar[title="downloading"] {
+    background-color: var(--progress);
+}
+
+.progressbar[title="downloaded"] {
+    background-color: var(--success);
+}

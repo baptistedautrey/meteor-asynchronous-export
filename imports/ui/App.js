@@ -7,6 +7,20 @@ import './Export.js';
 
 const IS_LOADING_STRING = "isLoading";
 
+
+const loadProgressionBar = (exportId) => {
+    const currentExport = ExportsCollection.findOne({ _id: exportId});
+
+    let intervalId = Meteor.setInterval(() => {
+      if (currentExport.loadingProgression < 100) {
+        currentExport.loadingProgression += 5;
+        Meteor.call('exports.updateProgressbar', exportId, currentExport.loadingProgression);
+      } else {
+        Meteor.clearInterval(intervalId);
+      }
+    }, 1000);
+}
+
 Template.mainContainer.onCreated(function mainContainerOnCreated() {
     this.state = new ReactiveDict();
   
@@ -18,8 +32,6 @@ Template.mainContainer.onCreated(function mainContainerOnCreated() {
 
 Template.mainContainer.helpers({
     exports() {
-        const instance = Template.instance();
-
         return ExportsCollection.find({}).fetch();
     },
     isLoading() {
@@ -30,6 +42,10 @@ Template.mainContainer.helpers({
 
 Template.mainContainer.events({
     'click #create-export-button'() {
-        Meteor.call('exports.insert');
+        Meteor.call('exports.insert', this._id, function(error, result){
+            var exportId = result;
+            console.log(exportId);
+            loadProgressionBar(exportId);
+        });
     },
 });

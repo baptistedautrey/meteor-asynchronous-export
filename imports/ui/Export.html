@@ -1,9 +1,12 @@
 <template name="export">
-    <li>
-        {{#if isLoading}}
-            <div class="loading">loading...</div>
-        {{else}}
-            <span>{{url}}</span>
-        {{/if}}
+    <li class="export-content">
+        <div class="progressbar-wrapper">
+            <div 
+                title="{{progressBarTitle}}" 
+                class="progressbar" 
+                style="width:{{loadingProgression}}%;">
+                    {{progressBarContent}}
+            </div>
+        </div>
     </li>
 </template>
