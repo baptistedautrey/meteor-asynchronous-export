@@ -84,7 +84,15 @@ header {
 
 .export-div > button {
   color: white;
-  background-color: #3B5AFF;
   border: none;
   border-radius: 7px;
+  margin: 3px;
+}
+
+#create-export-button {
+  background-color: #3B5AFF;
+}
+
+#delete-all-button {
+  background-color: #da5f5f;
 }

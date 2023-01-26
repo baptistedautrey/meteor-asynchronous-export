@@ -1,4 +1,3 @@
-import { check } from 'meteor/check';
 import { ExportsCollection } from '../db/ExportsCollection';
 
 const AVAILABLE_URLS = [
@@ -21,5 +20,8 @@ Meteor.methods({
       loadingProgression: loadingProgression,
       },
     }); 
+  },
+  'exports.deleteAll'() {
+    ExportsCollection.remove({});
   },
 })

@@ -44,8 +44,10 @@ Template.mainContainer.events({
     'click #create-export-button'() {
         Meteor.call('exports.insert', this._id, function(error, result){
             var exportId = result;
-            console.log(exportId);
             loadProgressionBar(exportId);
         });
+    },
+    'click #delete-all-button'() {
+        Meteor.call('exports.deleteAll');
     },
 });
