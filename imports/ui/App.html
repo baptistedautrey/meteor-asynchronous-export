@@ -1,0 +1,25 @@
+<body>
+    {{> mainContainer }}
+</body>
+
+<template name="mainContainer">
+    <div class="app">
+        <header>
+            <div class="app-bar">
+                <div class="app-header">
+                    <h1>Export list</h1>
+                </div>
+            </div>
+        </header>
+
+        <button id="create-export-button">
+            Export
+        </button>
+
+        <ul class="exports">
+            {{#each exports}}
+                {{> export}}
+            {{/each}}
+        </ul>
+    </div>
+</template>
